@@ -1,5 +1,4 @@
 const core = require("@actions/core");
-const { context } = require("@actions/github");
 import got from "got";
 import { validateSubscription } from "./subscription";
 
@@ -119,6 +118,7 @@ async function executeAction(): Promise<void> {
 }
 
 async function _executeAction(): Promise<void> {
+    const { context } = require("@actions/github");
     await validateSubscription()
     core.info("Checking commit messages against the Conventional Commits specification...");
 
